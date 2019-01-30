@@ -11,13 +11,10 @@ pygame.display.set_caption("opruien")
 keys = pygame.key.get_pressed()
 tux_im = pygame.image.load ("tux.png")
 achtergrond = pygame.image.load ('achtergrond.png')
-back_music =  pygame.mixer.music.load("StereoMadness (1).mp3")
+back_music = pygame.mixer.music.load("StereoMadness (1).mp3")
 jump_music = pygame.mixer.Sound ("jump_01.WAV")
 pygame.mixer.music.set_volume(0.2)
-GAME_FONT = pygame.freetype.Font("Georgia.ttf", 24)
-
-
-
+game_font = pygame.freetype.Font("Georgia.ttf", 24)
 
 class Player (pygame.sprite.Sprite):
     def __init__(self):
@@ -27,9 +24,10 @@ class Player (pygame.sprite.Sprite):
         self.height = 78
         self.x = screen_width - 400 
         self.y = screen_height - 60
-        self.rect =  pygame.Rect (self.x, self.y, self.width, self.height)
-        self.isJump = False #Als de player aan het springen is
-        self.fall_velocity = 0 
+        self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
+        # @morris horen deze 4 dingen hier onder niet thuis in de player?
+        self.isJump = False  # Als de player aan het springen is
+        self.fall_velocity = 0
         self.jump_velocity = 10
         self.isDead = False
         
@@ -176,7 +174,7 @@ while run:
     else:
         text = str("Oke")
         c = pygame.Color(1,2,3)
-        text = GAME_FONT.render(text, False )
+        text = game_font.render(text, False )
         screen.blit(text, (50, 50))
         tegenstanderTeller = tegenstanderTeller +1  
         #counter or teller to not make enemy a every loop
